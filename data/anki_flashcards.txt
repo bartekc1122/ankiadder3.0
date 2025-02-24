@@ -1,0 +1,5 @@
+Do you have a [[książkę]]?;book; bbbb
+How many [[braci]] do you have?;brothers; bbb
+Do you [[kochasz]] me?;love; llll
+I [[przeczytałem]] this article yesterday.;read /rɛd/; rrrr
+Do you have [[uszy]]?;ears
