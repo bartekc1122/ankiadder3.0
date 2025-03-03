@@ -3,3 +3,4 @@ __pychache__/
 *.pyc
 *.pyo
 /data/word_database.txt
+/data/anki_flashcards.txt
