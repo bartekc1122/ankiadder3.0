@@ -104,6 +104,7 @@ class AnkiAdder:
         top_word = self.word_repository.get_top_word()
         beginning_word_changed = self.word_repository.delete_word(top_word)
         self.refresh_gui(beginning_word_changed)
+        self.main_window.flashcard_creator.clear()
 
     def get_new_translation(self) -> None:
         log.info("Getting new translation")

@@ -16,9 +16,10 @@ log = logging.getLogger(__name__)
 class MainWindow:
     def __init__(self, event_manager: EventManager):
         log.info("MainWindow init.")
+        self.config = Config()
 
         self.root = tk.Tk()
-        self.config = Config()
+        self.root.config(background=self.config.BACKGROUND_COLOR)
         self.root.title("AnkiAdder 3.0")
         self.root.geometry("1200x800")
         self.event_manager = event_manager
@@ -29,15 +30,17 @@ class MainWindow:
 
     def configure_styles(self):
         style = ttk.Style()
-        style.configure(
-            "Custom.TFrame",
-            background=self.config.BACKGROUND_COLOR
-        )
+        style.configure("Custom.TFrame", background=self.config.BACKGROUND_COLOR)
         style.configure(
             "Custom.TLabel",
             background=self.config.BACKGROUND_COLOR,
             foreground=self.config.TEXT_COLOR,
-            font=(self.config.FONT_FAMILY, self.config.FONT_SIZE_LABEL, "bold")
+            font=(self.config.FONT_FAMILY, self.config.FONT_SIZE_LABEL, "bold"),
+        )
+        style.configure(
+            "Custom.TButton",
+            background=self.config.BACKGROUND_COLOR,
+            foreground=self.config.TEXT_COLOR,
         )
 
     def _setup_grid(self):

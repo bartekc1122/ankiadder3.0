@@ -3,6 +3,7 @@ import tkinter as tk
 import logging
 from events import EventManager, Event, EventDataKey, EventType
 from typing import List
+from config import Config
 
 log = logging.getLogger(__name__)
 
@@ -14,6 +15,7 @@ class Repository:
         self.parent = parent
         self.repository_window: tk.Toplevel = None
         self.word_list = []
+        self.config = Config()
 
     def open_window(self, word_list: List[str]) -> None:
         if self.repository_window is not None and self.repository_window.winfo_exists():

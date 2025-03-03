@@ -2,12 +2,14 @@ from tkinter import ttk
 import tkinter as tk
 from events import EventType, EventDataKey, EventManager, Event
 from typing import Tuple
+from config import Config
 
 
 class SentenceInput:
     def __init__(self, parent: tk.Widget, event_manager: EventManager):
         self.parent = parent
         self.event_manager = event_manager
+        self.config = Config()
         self.frame = ttk.Frame(parent)
         self._setup_grid()
         self._setup_ui()
@@ -43,6 +45,11 @@ class SentenceInput:
 
         self.back_label.grid(row=4, padx=5, pady=5)
         self.back_entry.grid(row=5, sticky="news", padx=5, pady=5)
+
+        self.my_sentence_label.configure(style="Custom.TLabel")
+        self.front_label.configure(style="Custom.TLabel")
+        self.back_label.configure(style="Custom.TLabel")
+        self.frame.configure(style="Custom.TFrame")
 
     def front_insert(self, text: str) -> None:
         self.front_entry.delete(0, tk.END)

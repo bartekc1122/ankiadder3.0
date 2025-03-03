@@ -3,3 +3,7 @@ How many [[braci]] do you have?;brothers; bbb
 Do you [[kochasz]] me?;love; llll
 I [[przeczytałem]] this article yesterday.;read /rɛd/; rrrr
 Do you have [[uszy]]?;ears
+I lost my [[telefon]];phone
+I lost the [[bitwa]].;battle
+Do you [[lubisz]] her?;like
+I like her [[pizza]].;pizza

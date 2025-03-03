@@ -44,6 +44,10 @@ class WordInput:
         )
         self.icon_button.grid(row=0, column=3, sticky="news", padx=5, pady=5)
 
+        self.frame.configure(style="Custom.TFrame")
+        self.word_count.configure(style="Custom.TLabel")
+        self.entry.configure(style="Custom.TEntry")
+
     def _handle_push_front(self) -> None:
         word = self.entry.get()
         self.event_manager.emit(
