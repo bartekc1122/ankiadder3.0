@@ -4,3 +4,4 @@ __pychache__/
 *.pyo
 /data/word_database.txt
 /data/anki_flashcards.txt
+logs/app.log
