@@ -2,5 +2,4 @@
 __pychache__/
 *.pyc
 *.pyo
-/data/word_database.txt 
- 
+/data/word_database.txt
