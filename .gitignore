@@ -3,5 +3,7 @@ __pychache__/
 *.pyc
 *.pyo
 /data/word_database.txt
+/data/word_database.txt.lnk
 /data/anki_flashcards.txt
+/data/anki_flashcards.txt.lnk
 logs/app.log

@@ -1,6 +1,7 @@
 import os
 from typing import List, Optional
 import logging
+from pathlib import Path
 
 log = logging.getLogger(__name__)
 
@@ -8,7 +9,7 @@ log = logging.getLogger(__name__)
 class WordRepository:
     def __init__(self, db_path: str):
         log.info("WordRepository init.")
-        self.db_path = db_path
+        self.db_path = Path(db_path).resolve()
         self.words: List[str] = []
         self.load_words()
 
