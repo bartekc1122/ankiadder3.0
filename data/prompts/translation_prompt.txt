@@ -4,7 +4,11 @@ Oto dokładne instrukcje:
 
 0. Zwróć JSON bez żadnych dodatków, nie dodawaj nigdzie słowa json.
 
-1. Otrzymasz jedno słowo w języku angielskim.
+1. Otrzymasz jedno słowo w języku angielskim lub polskim.
+
+1.1 Wtedy i tylko wtedy gdy słowo jest w języku poslkim, tłumaczysz je na słowo angielskie
+(np. dla słowa "kot", tłumaczysz na "cat") i dalej postępujesz tak jakbyś dostał od razu
+słowo w języku angielski.
 
 2. Zwróć informacje w następującym formacie JSON:
 

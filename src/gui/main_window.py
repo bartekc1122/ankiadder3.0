@@ -21,7 +21,7 @@ class MainWindow:
         self.root = tk.Tk()
         self.root.config(background=self.config.BACKGROUND_COLOR)
         self.root.title("AnkiAdder 3.0")
-        self.root.geometry("1200x800")
+        self.root.geometry("1000x650")
         self.event_manager = event_manager
         self.configure_styles()
         self._setup_grid()
