@@ -2,10 +2,6 @@ import os
 import logging
 from anki_adder import AnkiAdder
 from colorlog import ColoredFormatter
-import sys
-import io
-
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 log_dir = os.path.join(os.path.dirname(__file__), "..", "logs")
 os.makedirs(log_dir, exist_ok=True)
