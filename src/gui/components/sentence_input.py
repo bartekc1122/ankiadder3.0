@@ -69,7 +69,7 @@ class SentenceInput:
     def get_front_back(self) -> Tuple[str, str]:
         return (self.front_entry.get(), self.back_entry.get())
 
-    def _handle_sentence_corrctions(self) -> None:
+    def _handle_sentence_corrections(self) -> None:
         sentence = self.my_sentence_entry.get()
         self.event_manager.emit(
             Event(

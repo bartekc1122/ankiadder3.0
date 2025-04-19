@@ -13,7 +13,7 @@ log = logging.getLogger(__name__)
 
 class ResponseField(Enum):
     IS_WORD_CORRECT = "is_word_correct"
-    ENGLISH_SENTENCE = "Zdanie angielskie"
+    SENTENCE = "Zdanie"
     POLISH_SENTENCE = "Tłumaczenie zdania"
     FRONT = "Zdanie"
     BACK = "Wyraz"
@@ -106,7 +106,7 @@ class Query:
 
         fields = self.special_field_finder(
             translation_parts,
-            [ResponseField.ENGLISH_SENTENCE, ResponseField.POLISH_SENTENCE],
+            [ResponseField.SENTENCE, ResponseField.POLISH_SENTENCE],
         )
         return QueryResponse(parts=translation_parts, data=fields)
 

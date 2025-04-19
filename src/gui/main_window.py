@@ -9,6 +9,7 @@ from gui.components.translation_view import TranslationView
 from gui.components.sentence_input import SentenceInput
 from gui.components.flashcard_creator import FlashcardCreator
 from gui.components.repository import Repository
+from gui.components.language_selector import LanguageSelector
 
 log = logging.getLogger(__name__)
 
@@ -68,6 +69,13 @@ class MainWindow:
 
         self.repository_window = Repository(self.root, self.event_manager)
 
+        self.language_change = LanguageSelector(
+            self.root,
+            self.event_manager,
+            self.config.languages,
+            self.config.current_language,
+        )
+
     def _setup_key_bindings(self):
         # Input word entry, adding word to the back
         self.word_input.entry.bind(
@@ -75,9 +83,19 @@ class MainWindow:
         )
 
         self.sentence_input.my_sentence_entry.bind(
-            "<Return>", lambda event: self.sentence_input._handle_sentence_corrctions()
+            "<Return>", lambda event: self.sentence_input._handle_sentence_corrections()
         )
 
         self.sentence_input.my_sentence_entry.bind(
             "<Up>", lambda event: self.sentence_input._handle_add_flashcard()
         )
+
+        self.sentence_input.front_entry.bind(
+            "<Up>", lambda event: self.sentence_input._handle_add_flashcard()
+        )
+
+        self.sentence_input.back_entry.bind(
+            "<Up>", lambda event: self.sentence_input._handle_add_flashcard()
+        )
+
+        self.root.bind("<KeyPress-/>", lambda event: self.language_change.open_window())

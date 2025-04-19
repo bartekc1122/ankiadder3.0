@@ -42,10 +42,10 @@ class Repository:
         self.button_frame = tk.Frame(self.repository_window)
         self.button_frame.pack(fil=tk.X, padx=10, pady=10)
 
-        self.delete_batton = tk.Button(
+        self.delete_button = tk.Button(
             self.button_frame, text="Delete", command=self._handle_delete_word
         )
-        self.delete_batton.pack(side=tk.LEFT, padx=5)
+        self.delete_button.pack(side=tk.LEFT, padx=5)
 
         self.edit_button = tk.Button(
             self.button_frame, text="Edit", command=self._handle_edit_word

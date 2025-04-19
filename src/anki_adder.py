@@ -19,7 +19,7 @@ class AnkiAdder:
         self.flashcard_repository = FlashcardRepository(self.config.FLASHCARDS_PATH)
         self.query = Query()
 
-        # True - tranlation will be done on initialization
+        # True - translation will be done on initialization
         # False - will not do translation on initialization(saves tokens)
         self.refresh_gui(False)
 
@@ -46,6 +46,26 @@ class AnkiAdder:
             EventType.DELETE_WORD, self._handle_repository_delete
         )
         self.event_manager.subscribe(EventType.EDIT_WORD, self._handle_repository_edit)
+        self.event_manager.subscribe(
+            EventType.LANGUAGE_CHANGED, self._handle_language_change
+        )
+
+    def _handle_language_change(self, event: Event) -> None:
+        log.debug("Changing language")
+        new_language = event.data.get(EventDataKey.SELECTED_LANGUAGE)
+        if new_language not in self.config.languages:
+            log.error(f"There is no language {new_language} in the list")
+            return
+        self.word_repository.save_words()
+        self.word_repository.words.clear()
+        self.config.current_language = new_language
+        self.config.refresh_paths()
+        self.word_repository.db_path = self.config.DATABASE_PATH
+        self.flashcard_repository.fc_path = self.config.FLASHCARDS_PATH
+        self.query.load_messages_from_file()
+        self.word_repository.load_words()
+        self.refresh_gui(beginning_word_changed=True)
+        log.info("Language changed and gui refreshed")
 
     def _handle_word_submit_front(self, event: Event) -> None:
         log.debug("Word submit front")
@@ -74,15 +94,15 @@ class AnkiAdder:
         if not top_word:
             log.error("No top word")
             return
-        log.debug("Geting sencetnce corrections")
+        log.debug("Getting sentence corrections")
         sentence_corrections = self.query.get_sentence_corrections(sentence)
 
         self.main_window.flashcard_creator.corrections_insert(
             sentence_corrections.parts
         )
-        log.debug("Creading flashcard")
+        log.debug("Creating flashcard")
         query_response = self.query.get_flashcard(
-            sentence_corrections.data[ResponseField.ENGLISH_SENTENCE], top_word
+            sentence_corrections.data[ResponseField.SENTENCE], top_word
         )
         log.debug("Inserting flashcard")
         self.main_window.sentence_input.front_insert(
@@ -118,11 +138,11 @@ class AnkiAdder:
             return
 
         self.main_window.translation_view.word_label_change(word)
-        query_responce = self.query.get_word_translation(word)
-        self.main_window.translation_view.translation_insert(query_responce.parts)
+        query_response = self.query.get_word_translation(word)
+        self.main_window.translation_view.translation_insert(query_response.parts)
 
     def _handle_show_repository(self, event: Event) -> None:
-        log.debug("Show repositry.")
+        log.debug("Show repository.")
         self.main_window.repository_window.open_window(self.word_repository.words)
 
     def _handle_repository_delete(self, event: Event) -> None:

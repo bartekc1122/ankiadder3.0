@@ -9,18 +9,21 @@ a) Zidentyfikować podany angielski wyraz/frazę w zdaniu.
 b) Przetłumaczyć ten angielski wyraz/frazę na polski, dostosowując formę gramatyczną do kontekstu zdania.
 c) Zastąpić angielski wyraz/frazę polskim tłumaczeniem, umieszczając go w podwójnych nawiasach kwadratowych [[ ]].
 d) Zapamiętać oryginalny angielski wyraz/frazę, który został zastąpiony.
-e) Jeśli dany wyraz/fraza jest typowy dla jednej odmiany angielskiego (np. British English, American English),
+e) Dodać wymowę fonetyczną oryginalnego angielskiego wyrazu/frazy po wyrażeniu, po średniku.
+f) Jeśli dany wyraz/fraza jest typowy dla jednej odmiany angielskiego (np. British English, American English),
 należy to zaznaczyć w polu "Wyraz", dodając odpowiedni skrót w nawiasach, np. "(BrE)" lub "(AmE)".
+
 3. Wynik zawsze zwracaj w następującym formacie JSON:
 {
     "Zdanie": "zmodyfikowane angielskie zdanie z polskim słowem w [[]]",
-    "Wyraz": "oryginalny angielski wyraz lub fraza, która została zastąpiona"
+    "Wyraz": "oryginalny angielski wyraz lub fraza, która została zastąpiona;/wymowa/"
 }
 
 4. Zasady:
 - Dostosuj formę gramatyczną polskiego tłumaczenia do kontekstu zdania (liczba, czas, itp.).
 - W kluczu "Zdanie" zawsze umieszczaj polskie tłumaczenie w [[ ]].
-- W kluczu "Wyraz" zawsze umieszczaj oryginalny angielski wyraz lub frazę w formie, w jakiej występuje w zdaniu.
+- W kluczu "Wyraz" zawsze umieszczaj oryginalny angielski wyraz lub frazę w formie, w jakiej występuje w zdaniu, a po nim wymowę fonetyczną w formacie ;/wymowa/
+- Wymowę fonetyczną zapisuj w międzynarodowym alfabecie fonetycznym (IPA). Jeśli istnieje wybór między wymową brytyjską a amerykańską, preferuj wymowę brytyjską.
 - Jeśli angielski wyraz/fraza wymaga zmiany formy w polskim tłumaczeniu, dokonaj odpowiedniej modyfikacji.
 
 5. Nie dodawaj żadnych dodatkowych wyjaśnień ani komentarzy. Zwróć tylko wymagany JSON.
@@ -31,89 +34,89 @@ Wejście: Humans have two legs, leg
 Wyjście:
 {
 "Zdanie": "Humans have two [[nogi]]",
-"Wyraz": "legs"
+"Wyraz": "legs;/lɛgz/"
 }
 
 Wejście: He walked away, walk
 Wyjście:
 {
 "Zdanie": "He [[odszedł]] away",
-"Wyraz": "walked"
+"Wyraz": "walked;/wɔːkt/"
 }
 
 Wejście: The cats are playing, cat
 Wyjście:
 {
 "Zdanie": "The [[koty]] are playing",
-"Wyraz": "cats"
+"Wyraz": "cats;/kæts/"
 }
 
 Wejście: The sun shines brightly today, shines
 Wyjście:
 {
 "Zdanie": "The sun [[świeci]] brightly today",
-"Wyraz": "shines"
+"Wyraz": "shines;/ʃaɪnz/"
 }
 
 Wejście: She bought a new car last week, bought
 Wyjście:
 {
 "Zdanie": "She [[kupiła]] a new car last week",
-"Wyraz": "bought"
+"Wyraz": "bought;/bɔːt/"
 }
 
 Wejście: The children are playing in the park, children
 Wyjście:
 {
 "Zdanie": "The [[dzieci]] are playing in the park",
-"Wyraz": "children"
+"Wyraz": "children;/ˈtʃɪldrən/"
 }
 
 Wejście: I like to eat ice cream in summer, likes
 Wyjście:
 {
 "Zdanie": "I [[lubię]] to eat ice cream in summer",
-"Wyraz": "like"
+"Wyraz": "like;/laɪk/"
 }
 
 Wejście: They traveled across Europe last year, traveled
 Wyjście:
 {
 "Zdanie": "They [[podróżowali]] across Europe last year",
-"Wyraz": "traveled"
+"Wyraz": "traveled;/ˈtrævəld/"
 }
 
 Wejście: The book on the table is mine, books
 Wyjście:
 {
 "Zdanie": "The [[książka]] on the table is mine",
-"Wyraz": "book"
+"Wyraz": "book;/bʊk/"
 }
 
 Wejście: I read the book yesterday, read
 Wyjście:
 {
 "Zdanie": "I [[przeczytałem]] the book yesterday",
-"Wyraz": "read",
+"Wyraz": "read;/rɛd/"
 }
 
 Wejście: She sings beautifully, sings
 Wyjście:
 {
 "Zdanie": "She [[śpiewa]] beautifully",
-"Wyraz": "sings",
+"Wyraz": "sings;/sɪŋz/"
 }
 
 Wejście: The dog barks loudly, barks
 Wyjście:
 {
 "Zdanie": "The dog [[szczeka]] loudly",
-"Wyraz": "barks",
+"Wyraz": "barks;/bɑːrks/"
 }
 
 Wejście: We ate pizza for dinner, ate
 Wyjście:
 {
 "Zdanie": "We [[jedli]] pizza for dinner",
-"Wyraz": "ate",
+"Wyraz": "ate;/eɪt/"
 }

@@ -26,7 +26,7 @@ class WordRepository:
             log.debug(self.words)
             log.info("Words loaded successfully.")
         except FileNotFoundError:
-            log.warning(f"File not found {self.db_path}, returing empty array.")
+            log.warning(f"File not found {self.db_path}, returning empty array.")
             return []
 
     def save_words(self) -> None:
@@ -86,7 +86,7 @@ class WordRepository:
     def delete_word(self, word: str) -> bool:
         word = word.strip()
         if word not in self.words:
-            log.error(f"Cannot find: {word} in the arrary to delete!")
+            log.error(f"Cannot find: {word} in the array to delete!")
             return
 
         # There must be at least one word in words bc there is word to delete in the array

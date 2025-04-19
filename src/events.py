@@ -14,6 +14,7 @@ class EventType(Enum):
     SHOW_REPOSITORY = auto()
     DELETE_WORD = auto()
     EDIT_WORD = auto()
+    LANGUAGE_CHANGED = auto()
 
 
 class EventDataKey(Enum):
@@ -24,6 +25,7 @@ class EventDataKey(Enum):
     BACK = auto()
     EDIT_NEW_WORD = auto()
     EDIT_OLD_WORD = auto()
+    SELECTED_LANGUAGE = auto()
 
 
 @dataclass
@@ -49,7 +51,7 @@ class EventManager:
     def emit(self, event: Event) -> None:
         if event.type in self._subscribers:
             for callback in self._subscribers[event.type]:
-                log.info(f"Emiting {event.type} event to {callback.__name__}.")
+                log.info(f"Emitting {event.type} event to {callback.__name__}.")
                 callback(event)
         else:
             log.error(f"Cannot emit event {event.type}, do not exists in dictionary.")
