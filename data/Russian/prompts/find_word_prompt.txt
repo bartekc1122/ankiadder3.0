@@ -16,7 +16,7 @@ należy to zaznaczyć w polu "Wyraz", dodając odpowiedni skrót w nawiasach, np
 3. Wynik zawsze zwracaj w następującym formacie JSON:
 {
     "Zdanie": "zmodyfikowane rosyjskie zdanie z polskim słowem w [[]]",
-    "Wyraz": "oryginalny rosyjski wyraz lub fraza, która została zastąpiona ale formie pasującej do zdania;/wymowa/"
+    "Wyraz": "oryginalny rosyjski wyraz lub fraza, która została zastąpiona ale formie pasującej do zdania(zachowuj formę wyrazu ze zdania);/wymowa/"
 }
 
 4. Zasady:

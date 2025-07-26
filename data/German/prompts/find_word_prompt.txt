@@ -24,8 +24,16 @@ należy to zaznaczyć w polu "Wyraz", dodając odpowiedni skrót w nawiasach, np
 - W kluczu "Zdanie" zawsze umieszczaj polskie tłumaczenie w [[ ]].
 - W kluczu "Wyraz" zawsze umieszczaj oryginalny niemiecki wyraz lub frazę w formie, w jakiej występuje w zdaniu, a po nim wymowę fonetyczną w formacie ;/wymowa/
 - W przypadku rzeczowników, zawsze podawaj w nawiasach rodzajnik (der, die, das) przed oryginalnym niemieckim wyrazem, np. "(das) Buch;/wymowa/"
+- Wyraz musi być dokładnie w takiej samej formie, w jakiej występuje w zdaniu:
+  * Jeśli rzeczownik jest w liczbie mnogiej, zapisz go jako "(die) Rzeczowniki;/wymowa/"
+  * Jeśli czasownik jest w określonej formie (np. 2 os. liczby mnogiej), zachowaj tę formę
+- Przy zaprzeczeniach typu "kein/keine" zachowaj liczbę rzeczownika zgodną z oryginalnym zdaniem
+- W kluczu "Wyraz" zawsze umieszczaj oryginalny niemiecki wyraz lub frazę DOKŁADNIE w takiej formie, w jakiej występuje w zdaniu, a po nim wymowę fonetyczną w formacie ;/wymowa/
+- Jeśli w zdaniu rzeczownik jest w liczbie mnogiej (np. Bücher, Haustiere, Kinder), w kluczu "Wyraz" również musi być w liczbie mnogiej, z odpowiednim rodzajnikiem "(die)"
+- W przypadku rzeczowników w liczbie pojedynczej, podawaj odpowiedni rodzajnik (der, die, das) przed oryginalnym niemieckim wyrazem
 - Wymowę fonetyczną zapisuj w międzynarodowym alfabecie fonetycznym (IPA).
 - Jeśli niemiecki wyraz/fraza wymaga zmiany formy w polskim tłumaczeniu, dokonaj odpowiedniej modyfikacji.
+- KLUCZOWA ZASADA: W kluczu "Wyraz" ZAWSZE umieszczaj oryginalny niemiecki wyraz DOKŁADNIE w takiej formie gramatycznej, w jakiej występuje w zdaniu - dotyczy to wszystkich części mowy
 
 5. Nie dodawaj żadnych dodatkowych wyjaśnień ani komentarzy. Zwróć tylko wymagany JSON.
 
@@ -70,7 +78,7 @@ Wejście: Die Kinder spielen im Park, Kinder
 Wyjście:
 {
 "Zdanie": "Die [[dzieci]] spielen im Park",
-"Wyraz": "(das) Kind;/kɪnt/"
+"Wyraz": "(die) Kinder;/ˈkɪndɐ/"
 }
 
 Wejście: Ich magen im Sommer Eis essen, magen
@@ -121,3 +129,49 @@ Wyjście:
 "Zdanie": "Wir haben Pizza zum Abendessen [[zjedli]]",
 "Wyraz": "gegessen;/gəˈgɛsn̩/"
 }
+Wejście: Ich habe keine Haustiere, Haustiere
+Wyjście:
+{
+"Zdanie": "Ich habe keine [[zwierząt domowych]]",
+"Wyraz": "(die) Haustiere;/ˈhaʊstiːʁə/"
+}
+Wejście: Ich lese viele Bücher, Bücher
+Wyjście:
+{
+"Zdanie": "Ich lese viele [[książki]]",
+"Wyraz": "(die) Bücher;/ˈbyːçɐ/"
+}
+
+Wejście: Die Kinder spielen mit den Spielzeugen, Spielzeugen
+Wyjście:
+{
+"Zdanie": "Die Kinder spielen mit den [[zabawkami]]",
+"Wyraz": "(die) Spielzeuge;/ˈʃpiːlʦɔʏɡə/"
+}
+
+Wejście: Er kauft die Äpfel im Supermarkt, Äpfel
+Wyjście:
+{
+"Zdanie": "Er kauft die [[jabłka]] im Supermarkt",
+"Wyraz": "(die) Äpfel;/ˈɛpfl̩/"
+}
+Wejście: Ich habe grüne Augen, grun
+Wyjście:
+{
+"Zdanie": "Ich habe [[zielone]] Augen",
+"Wyraz": "grüne;/ˈɡʁyːnə/"
+}
+
+Wejście: Das ist ein schönes Haus, schon
+Wyjście:
+{
+"Zdanie": "Das ist ein [[piękny]] Haus",
+"Wyraz": "schönes;/ˈʃøːnəs/"
+}
+WAŻNE: Wyraz w kluczu "Wyraz" musi być IDENTYCZNY z formą występującą w zdaniu. 
+Jeśli w zdaniu jest "Bücher", w kluczu "Wyraz" również musi być "Bücher", a nie "Buch".
+Jeśli w zdaniu jest "kaufte", w kluczu "Wyraz" również musi być "kaufte", a nie "kaufen".s
+UWAGA - CZĘSTE BŁĘDY:
+- NIE podawaj formy podstawowej słowa (infinitywu dla czasowników, mianownika l.poj. dla rzeczowników, formy bez końcówki dla przymiotników)
+- NIE zmieniaj formy gramatycznej słowa - jeśli w zdaniu jest "grüne", w wyniku musi być "grüne", a NIE "grün"
+- NIE zmieniaj liczby - jeśli w zdaniu jest "Bücher", w wyniku musi być "Bücher", a NIE "Buch"
