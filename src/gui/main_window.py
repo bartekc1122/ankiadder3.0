@@ -22,7 +22,7 @@ class MainWindow:
         self.root = tk.Tk()
         self.root.config(background=self.config.BACKGROUND_COLOR)
         self.root.title("AnkiAdder 3.0")
-        self.root.geometry("1000x650")
+        self.root.geometry("1000x750")
         self.event_manager = event_manager
         self.configure_styles()
         self._setup_grid()
@@ -98,4 +98,4 @@ class MainWindow:
             "<Up>", lambda event: self.sentence_input._handle_add_flashcard()
         )
 
-        self.root.bind("<KeyPress-/>", lambda event: self.language_change.open_window())
+        self.root.bind("/", lambda event: self.language_change.open_window())

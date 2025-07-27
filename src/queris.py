@@ -2,7 +2,7 @@ from config import Config, ConfigKey
 from pathlib import Path
 import logging
 from typing import Dict, List, Tuple, Any
-from LLMModels import AnthropicProvider
+from LLMModels import AnthropicProvider, GeminiProvider
 from formatter import Formatter
 from error_handler import ErrorHandler
 from enum import Enum
@@ -32,7 +32,8 @@ class Query:
         self.translation_prompt: str
         self.sentence_prompt: str
         self.find_word_prompt: str
-        self.lmm = AnthropicProvider()
+        # self.lmm = AnthropicProvider()
+        self.lmm = GeminiProvider()
         self.formatter = Formatter()
         self.error_handler = ErrorHandler()
 

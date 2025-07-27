@@ -7,6 +7,8 @@ import dotenv
 import anthropic
 import logging
 import os
+from google import genai
+from google.genai import types
 
 log = logging.getLogger(__name__)
 
@@ -25,6 +27,44 @@ class LLMProvider(ABC):
     @abstractmethod
     def analyze_performance(self, model_response: Any) -> None:
         pass
+
+
+class GeminiProvider(LLMProvider):
+    def __init__(self):
+        try:
+            dotenv.load_dotenv()
+        except Exception as e:
+            log.warning(f"Could not load .env file: {str(e)}")
+
+        self.api_key = os.environ.get("GEMINI_API_KEY")
+        if not self.api_key:
+            log.error("ANTHROPIC_API_KEY not found in environment variables.")
+            raise ValueError("ANTHROPIC_API_KEY not found in environment variables.")
+        log.info("API key loaded successfully.")
+        self.client = genai.Client()
+
+    def query(
+        self, input_text: str, system_message: str, **kwargs: Any
+    ) -> ModelResponse:
+        log.info(f"Requesting: {input_text}")
+        try:
+            response = self.client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=input_text,
+                config=types.GenerateContentConfig(
+                thinking_config=types.ThinkingConfig(thinking_budget=0), # Disables thinking
+                system_instruction=system_message
+                ),
+            ) 
+            return ModelResponse(
+                content=response.text, raw_response=response
+            )
+        except Exception as e:
+            log.error("Anthropic API error!")
+            raise RuntimeError(f"Anthropic API error: {str(e)}")
+             
+    def analyze_performance(self, model_response: Any) -> None:
+        log.info("not implemented analyze_performance")
 
 
 class AnthropicProvider(LLMProvider):
