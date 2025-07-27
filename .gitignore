@@ -7,3 +7,4 @@ __pychache__/
 */anki_flashcards.txt
 */anki_flashcards.txt.lnk
 logs/app.log
+*.venv
