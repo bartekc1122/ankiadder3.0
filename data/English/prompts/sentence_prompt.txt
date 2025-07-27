@@ -4,7 +4,7 @@ Oto szczegółowe instrukcje:
 
 1. Otrzymasz jedno zdanie w języku angielskim.
 
-2. Przeanalizuj zdanie pod kątem poprawności gramatycznej i naturalności językowej.
+2. Przeanalizuj zdanie pod kątem poprawności gramatycznej i naturalności językowej. Jeśli zdanie uznasz za nienaturalne, w sekcji "Naturalność języka" wyjąnij dlaczego i jak można to poprawić, zachowujc słowa ale zmieniając kontekst wypowiedzi.
 
 3. Zwróć analizę w następującym formacie JSON:
 
