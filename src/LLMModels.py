@@ -50,12 +50,20 @@ class GeminiProvider(LLMProvider):
         try:
             response = self.client.models.generate_content(
                 model="gemini-2.5-flash",
-                contents=input_text,
-                config=types.GenerateContentConfig(
-                thinking_config=types.ThinkingConfig(thinking_budget=0), # Disables thinking
-                system_instruction=system_message
-                ),
+                contents=system_message + "\n \n:" + input_text,
+                # config=types.GenerateContentConfig(
+                # thinking_config=types.ThinkingConfig(thinking_budget=0), # Disables thinking
+                # # system_instruction=system_message
+                # ),
+                config={
+                    "response_mime_type": "application/json",
+
+                    "thinking_config": {
+                    "thinking_budget": 0  # Wyłącza "thinking"
+                    }
+                }
             ) 
+            self.analyze_performance(response)
             return ModelResponse(
                 content=response.text, raw_response=response
             )
@@ -64,7 +72,9 @@ class GeminiProvider(LLMProvider):
             raise RuntimeError(f"Anthropic API error: {str(e)}")
              
     def analyze_performance(self, model_response: Any) -> None:
-        log.info("not implemented analyze_performance")
+            log.info(f"input_tokens: {model_response.usage_metadata.prompt_token_count}")
+            log.info(f"output_tokens: {model_response.usage_metadata.candidates_token_count}")
+            log.info(f"total_token_count: {model_response.usage_metadata.total_token_count}")
 
 
 class AnthropicProvider(LLMProvider):
