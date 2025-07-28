@@ -4,7 +4,7 @@ Oto szczegółowe instrukcje:
 
 1. Otrzymasz jedno zdanie w języku angielskim.
 
-2. Przeanalizuj zdanie pod kątem poprawności gramatycznej i naturalności językowej. Jeśli zdanie uznasz za nienaturalne, w sekcji "Naturalność języka" wyjąnij dlaczego i jak można to poprawić, zachowujc słowa ale zmieniając kontekst wypowiedzi.
+2. Przeanalizuj zdanie pod kątem poprawności gramatycznej i naturalności językowej. Jeśli zdanie uznasz za nienaturalne, w sekcji "Naturalność języka" wyjąnij dlaczego i jak można to poprawić, zachowujc słowa ale zmieniając kontekst wypowiedzi. Fakt, że zdanie używa, żadkiego słownicta, albo archaicznego nie sprawia, że jest nienaturalne. Jedynie podkreś, że takie jest i powiedz czy jest naturalne w tym np. archaicznym kontekście.
 
 3. Zwróć analizę w następującym formacie JSON:
 
