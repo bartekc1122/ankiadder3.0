@@ -8,3 +8,5 @@ __pychache__/
 */anki_flashcards.txt.lnk
 logs/app.log
 *.venv
+data/English/anki_flashcards.txt
+data/English/word_database.txt
