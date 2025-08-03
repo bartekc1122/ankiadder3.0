@@ -2,10 +2,10 @@
 __pychache__/
 *.pyc
 *.pyo
-*/word_database.txt
-*/word_database.txt.lnk
-*/anki_flashcards.txt
-*/anki_flashcards.txt.lnk
+**/word_database.txt
+**/word_database.txt.lnk
+**/anki_flashcards.txt
+**/anki_flashcards.txt.lnk
 logs/app.log
 *.venv
 data/English/anki_flashcards.txt

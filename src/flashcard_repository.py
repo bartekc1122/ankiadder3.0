@@ -14,8 +14,14 @@ class FlashcardRepository:
             if not os.path.exists(self.fc_path):
                 log.warning(f"Flashcard repository not found at {self.fc_path}!")
 
-            with open(self.fc_path, "a", encoding="utf-8") as file:
-                file.writelines(front + ";" + back + "\n")
+            with open(self.fc_path, "r", encoding="utf-8") as file:
+                flashcards = file.read()
+
+            flashcards = flashcards + "\n" + front + ";" + back
+
+            with open(self.fc_path, "w", encoding="utf-8") as file:
+                file.write(flashcards)
+
             log.info(f"Flashcard: {front + ';' + back + '\n'}, successfully added.")
         except FileNotFoundError:
             log.error(f"File not found: {self.fc_path}!")
