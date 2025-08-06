@@ -49,7 +49,7 @@ class GeminiProvider(LLMProvider):
         log.info(f"Requesting: {input_text}")
         try:
             response = self.client.models.generate_content(
-                model="gemini-2.5-pro",
+                model="gemini-2.5-flash",
                 contents=system_message + "\n\nWord: " + input_text,
                 # config=types.GenerateContentConfig(
                 # thinking_config=types.ThinkingConfig(thinking_budget=0), # Disables thinking
@@ -59,7 +59,7 @@ class GeminiProvider(LLMProvider):
                     "response_mime_type": "application/json",
 
                     "thinking_config": {
-                    "thinking_budget": 200  # Wyłącza "thinking"
+                    "thinking_budget": 0  # Wyłącza "thinking"
                     }
                 }
             ) 

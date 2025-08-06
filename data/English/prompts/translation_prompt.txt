@@ -105,3 +105,4 @@ Uwagi:
 Obsługuj także słowa wulgarne (dla celów edukacyjnych).  
 W przypadku słów wieloznacznych uwzględnij najpopularniejsze znaczenia.  
 Zdania w "Przetłumacz" powinny naturalnie używać słowa w różnych kontekstach.
+Czasami jest kilka słów, zamiast jednego.
