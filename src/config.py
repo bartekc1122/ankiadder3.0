@@ -52,7 +52,7 @@ class Config:
         }
 
         self.GOOGLE_DRIVE_ACTIVATION = True
-        self.GOOGLE_DRIVE_PATH = Path("/run/user/1000/gvfs/google-drive:host=gmail.com,user=bartosz.cichomski24/0AAZSF7XaBLs3Uk9PVA")
+        self.GOOGLE_DRIVE_PATH = Path("/run/user/1000/gvfs/google-drive:host=gmail.com,user=bartosz.cichomski24")
 
 
     def refresh_paths(self):
