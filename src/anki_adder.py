@@ -5,6 +5,7 @@ from flashcard_repository import FlashcardRepository
 from config import Config
 import logging
 from queris import Query, ResponseField
+import os
 
 log = logging.getLogger(__name__)
 
@@ -13,6 +14,9 @@ class AnkiAdder:
     def __init__(self):
         log.info("AnkiAdder init.")
         self.config = Config()
+        if self.config.GOOGLE_DRIVE_ACTIVATION == True:
+            log.info("Activation of google drive")
+            self._google_drive_activatoin()
         self.event_manager = EventManager()
         self.main_window = MainWindow(self.event_manager)
         self.word_repository = WordRepository(self.config.DATABASE_PATH)
@@ -25,6 +29,25 @@ class AnkiAdder:
 
         self._setup_events_handlers()
         self.main_window.root.mainloop()
+
+    def _google_drive_activatoin(self) -> None:
+        try:
+            if not os.path.exists(self.config.GOOGLE_DRIVE_PATH):
+                log.error(f"Error: path {self.config.GOOGLE_DRIVE_PATH} do not exsists")
+                return 
+            if not os.path.isdir(self.config.GOOGLE_DRIVE_PATH):
+                log.error(f"Error: Path '{self.config.GOOGLE_DRIVE_PATH}' is not a directory.")
+                return 
+            content = os.listdir(self.config.GOOGLE_DRIVE_PATH)
+            log.info(f"Google Drive activated. Found {len(content)} items in the root directory.")
+            return
+        except OSError as e:
+            log.error(f"Failed to activate Google Drive. Error: {e}")
+            log.error("Please ensure the drive is correctly mounted and you have permissions.")
+            return 
+        except Exception as e:
+            log.error(f"An unexpected error occurred during drive activation: {e}")
+            return 
 
     def _setup_events_handlers(self) -> None:
         self.event_manager.subscribe(

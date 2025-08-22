@@ -50,6 +50,11 @@ class Config:
             "normal": {"font": (self.FONT_FAMILY, self.FONT_SIZE_NORMAL)},
             "indent": {"lmargin1": 20, "lmargin2": 20},
         }
+
+        self.GOOGLE_DRIVE_ACTIVATION = True
+        self.GOOGLE_DRIVE_PATH = Path("/run/user/1000/gvfs/google-drive:host=gmail.com,user=bartosz.cichomski24/0AAZSF7XaBLs3Uk9PVA")
+
+
     def refresh_paths(self):
         self._relative_language_path = Path(f"./data/{self.current_language}")
         self.DATABASE_PATH = Path.joinpath(self._relative_language_path, "word_database.txt")
